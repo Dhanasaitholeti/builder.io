@@ -1,9 +1,12 @@
+import Layout from "./Layout";
+import RouteManager from "./routes/RouteManager";
+
 const App = () => {
   return (
     <>
-      <div>
-        <h1>This is The application</h1>
-      </div>
+      <Layout>
+        <RouteManager />
+      </Layout>
     </>
   );
 };

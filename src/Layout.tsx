@@ -10,9 +10,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <>
       <div>
         <Navbar />
-        <div>
+        <div className="grid">
           <ToolBar />
-          <main>{children}</main>
+          <main className="">{children}</main>
         </div>
       </div>
     </>
