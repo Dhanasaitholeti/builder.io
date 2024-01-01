@@ -1,4 +1,5 @@
 export interface elementProps {
-    element: string;
-    content: string;
-  }
+  elementType: "singleTag" | "multiTag";
+  element: string;
+  content?: string;
+}

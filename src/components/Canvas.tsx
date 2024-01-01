@@ -19,7 +19,7 @@ const Canvas = () => {
       <div
         onDrop={(e) => handleOnDrop(e)}
         onDragOver={(e) => allowDrag(e)}
-        className="h-[100%]"
+        className="h-[100%] "
       >
         {elements.map((element) => (
           <CreateComponent {...element} />

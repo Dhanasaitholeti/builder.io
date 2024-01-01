@@ -1,23 +1,16 @@
-interface TextElementProps {
-  text?: string;
-}
+import SideElementCard from "../shared/SideElementCard";
 
-const TextElement: React.FC<TextElementProps> = ({ text = "Text Element" }) => {
-  const handleOnDragStart = (e: React.DragEvent) => {
-    e.dataTransfer.setData(
-      "textData",
-      JSON.stringify({
-        element: "p",
-        content: "This is Text lol",
-      })
-    );
+const TextElement = () => {
+  
+  const componentData = {
+    element: "p",
+    content: "This is Text lol",
   };
+
 
   return (
     <>
-      <p draggable="true" onDragStart={(e) => handleOnDragStart(e)}>
-        {text}
-      </p>
+      <SideElementCard elementName="Text Element" componentData={componentData} />
     </>
   );
 };
