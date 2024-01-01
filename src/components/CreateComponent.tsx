@@ -4,15 +4,16 @@ const CreateComponent: React.FC<elementProps> = ({
   element,
   content,
   elementType,
+  id,
 }) => {
   const Element = `${element}` as keyof JSX.IntrinsicElements;
 
   return (
     <>
       {elementType == "singleTag" ? (
-        <Element src={content} />
+        <Element src={content} id={id} />
       ) : (
-        <Element>{content}</Element>
+        <Element id={id}>{content}</Element>
       )}
     </>
   );

@@ -5,6 +5,8 @@ import { elementProps } from "../libs/types/element.type";
 const Canvas = () => {
   const [elements, setElements] = useState<elementProps[]>([]);
 
+  console.log(elements);
+
   const handleOnDrop = (e: React.DragEvent) => {
     const elementdata = JSON.parse(e.dataTransfer.getData("textData"));
     setElements((prev) => [...prev, elementdata]);
