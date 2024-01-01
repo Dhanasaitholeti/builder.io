@@ -1,7 +1,9 @@
+import Canvas from "../components/Canvas";
+
 const HomeScreen = () => {
   return (
     <>
-      <div>This is Home Screen</div>
+      <Canvas />
     </>
   );
 };

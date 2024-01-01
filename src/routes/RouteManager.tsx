@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import HomeScreen from "../pages/HomeScreen";
-import Loading from "../components/Loading";
+import Loading from "../components/shared/Loading";
 
 const NotFoundScreen = lazy(() => import("../pages/NotFoundScreen"));
 

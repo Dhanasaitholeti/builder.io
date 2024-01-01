@@ -1,5 +1,5 @@
-import Navbar from "./components/Navbar";
-import ToolBar from "./components/ToolBar";
+import Navbar from "./components/shared/Navbar";
+import ToolBar from "./components/shared/ToolBar";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -8,11 +8,15 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <div>
+      <div className="flex flex-col min-h-screen">
         <Navbar />
-        <div className="grid">
-          <ToolBar />
-          <main className="">{children}</main>
+        <div className="flex-grow grid grid-cols-12">
+          <aside className="col-span-2 bg-red-300">
+            <ToolBar />
+          </aside>
+          <main className="col-start-3 col-span-full bg-green-200">
+            {children}
+          </main>
         </div>
       </div>
     </>

@@ -1,9 +1,9 @@
 const Navbar = () => {
   return (
     <>
-      <div>
+      <nav className="static bg-blue-200 px-10 py-3">
         <h1>This is Navbar</h1>
-      </div>
+      </nav>
     </>
   );
 };
