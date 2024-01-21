@@ -1,9 +1,12 @@
 import Canvas from "../components/Canvas";
+import { ElementContextProvider } from "../contexts/ElementContext";
 
 const HomeScreen = () => {
   return (
     <>
-      <Canvas />
+      <ElementContextProvider>
+        <Canvas />
+      </ElementContextProvider>
     </>
   );
 };

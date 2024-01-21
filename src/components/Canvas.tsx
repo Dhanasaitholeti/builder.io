@@ -1,15 +1,16 @@
-import { useState } from "react";
+import { useContext } from "react";
 import CreateComponent from "./CreateComponent";
+import { ElementContext } from "../contexts/ElementContext";
 import { elementProps } from "../libs/types/element.type";
 
 const Canvas = () => {
-  const [elements, setElements] = useState<elementProps[]>([]);
+  const data = useContext(ElementContext);
 
-  console.log(elements);
+  console.log(data);
 
   const handleOnDrop = (e: React.DragEvent) => {
     const elementdata = JSON.parse(e.dataTransfer.getData("textData"));
-    setElements((prev) => [...prev, elementdata]);
+    data?.addElement(elementdata);
   };
 
   const allowDrag = (e: React.DragEvent) => {
@@ -23,7 +24,7 @@ const Canvas = () => {
         onDragOver={(e) => allowDrag(e)}
         className="h-[100%] "
       >
-        {elements.map((element) => (
+        {data?.elements?.map((element: elementProps) => (
           <CreateComponent {...element} />
         ))}
       </div>
