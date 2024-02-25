@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { elementProps } from "../libs/types/element.type";
 import { ElementContext } from "../contexts/ElementContext";
+import ContextMenu from "./ContextMenu";
+import { IContextMenu } from "../libs/types/contextmenu.type";
 
 const CreateComponent: React.FC<elementProps> = ({
   element,
@@ -11,15 +13,27 @@ const CreateComponent: React.FC<elementProps> = ({
   const context = useContext(ElementContext);
   const [editable, setEditable] = useState<boolean>(false);
   const [chContent, setChContent] = useState<string>("");
+  const [showContextMenu, setShowContextMenu] = useState<IContextMenu>({
+    show: false,
+    position: { left: 0, top: 0 },
+  });
 
   const Element = `${element}` as keyof JSX.IntrinsicElements;
+
+  const hadleOnContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowContextMenu({
+      show: true,
+      position: { left: e.pageX, top: e.pageY },
+    });
+  };
 
   const handleDoubleClick = () => {
     console.log("editing enabled");
     setEditable((prev) => !prev);
   };
 
-  const handleOnChange = (e: any) => {
+  const handleOnChange = (e: React.FormEvent) => {
     const newValue = e.currentTarget.textContent || "";
     setChContent(() => newValue);
     context?.changeContentOfElement(id, chContent);
@@ -28,17 +42,30 @@ const CreateComponent: React.FC<elementProps> = ({
   return (
     <>
       {elementType == "singleTag" ? (
-        <Element src={content} id={id} />
+        <Element
+          src={content}
+          id={id}
+          className="hover:cursor-pointer"
+          onContextMenu={(e) => hadleOnContextMenu(e)}
+        />
       ) : (
         <Element
           id={id}
-          contentEditable={editable}
-          onInput={(e) => handleOnChange(e)}
-          onDoubleClick={() => handleDoubleClick()}
+          contentEditable={editable} //will remove it
+          onContextMenu={(e) => hadleOnContextMenu(e)}
+          onInput={(e) => handleOnChange(e)} //will remove
+          onDoubleClick={() => handleDoubleClick()} //will remove
           className="hover:cursor-pointer"
         >
           {content}
         </Element>
+      )}
+
+      {showContextMenu.show && (
+        <ContextMenu
+          position={showContextMenu.position}
+          closeContextMenu={setShowContextMenu}
+        />
       )}
     </>
   );

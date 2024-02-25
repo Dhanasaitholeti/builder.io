@@ -23,7 +23,7 @@ const Canvas: React.FC = () => {
         className="h-[100%] "
       >
         {data?.elements?.map((element: elementProps) => (
-          <CreateComponent {...element} />
+          <CreateComponent {...element} key={element.id} />
         ))}
       </div>
     </>
