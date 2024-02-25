@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { elementProps } from "../libs/types/element.type";
 import { ElementContext } from "../contexts/ElementContext";
+import ContextMenu from "./ContextMenu";
 
 const CreateComponent: React.FC<elementProps> = ({
   element,
@@ -11,15 +12,29 @@ const CreateComponent: React.FC<elementProps> = ({
   const context = useContext(ElementContext);
   const [editable, setEditable] = useState<boolean>(false);
   const [chContent, setChContent] = useState<string>("");
+  const [showContextMenu, setShowContextMenu] = useState<{
+    show: boolean;
+    position: { top: number; left: number };
+  }>({ show: false, position: { left: 0, top: 0 } });
 
   const Element = `${element}` as keyof JSX.IntrinsicElements;
+
+  const hadleOnContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setShowContextMenu({
+      show: true,
+      position: { left: e.pageX, top: e.pageY },
+    });
+    console.log(e.pageX, e.pageY);
+    console.log("context menu opened");
+  };
 
   const handleDoubleClick = () => {
     console.log("editing enabled");
     setEditable((prev) => !prev);
   };
 
-  const handleOnChange = (e: any) => {
+  const handleOnChange = (e: React.FormEvent) => {
     const newValue = e.currentTarget.textContent || "";
     setChContent(() => newValue);
     context?.changeContentOfElement(id, chContent);
@@ -28,17 +43,26 @@ const CreateComponent: React.FC<elementProps> = ({
   return (
     <>
       {elementType == "singleTag" ? (
-        <Element src={content} id={id} />
+        <Element
+          src={content}
+          id={id}
+          onContextMenu={(e) => hadleOnContextMenu(e)}
+        />
       ) : (
         <Element
           id={id}
           contentEditable={editable}
+          onContextMenu={(e) => hadleOnContextMenu(e)}
           onInput={(e) => handleOnChange(e)}
           onDoubleClick={() => handleDoubleClick()}
           className="hover:cursor-pointer"
         >
           {content}
         </Element>
+      )}
+
+      {showContextMenu.show && (
+        <ContextMenu position={showContextMenu.position} />
       )}
     </>
   );

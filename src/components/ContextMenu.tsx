@@ -1,9 +1,19 @@
-interface IContextMenu {}
+import { useEffect } from "react";
 
-const ContextMenu: React.FC<IContextMenu> = ({}) => {
+interface IContextMenu {
+  position: { left: number; top: number };
+}
+
+const ContextMenu: React.FC<IContextMenu> = ({ position }) => {
+  console.log(position);
+
+  useEffect(() => {}, [position]);
+
   return (
     <>
-      <div>
+      <div
+        className={`absolute z-10 top-[${position.top}] left-[${position.left}]`}
+      >
         <p>This is Context Menu</p>
         <ul>
           <li>edit conetnt</li>
