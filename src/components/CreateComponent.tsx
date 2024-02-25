@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { elementProps } from "../libs/types/element.type";
 import { ElementContext } from "../contexts/ElementContext";
 import ContextMenu from "./ContextMenu";
+import { IContextMenu } from "../libs/types/contextmenu.type";
 
 const CreateComponent: React.FC<elementProps> = ({
   element,
@@ -12,10 +13,10 @@ const CreateComponent: React.FC<elementProps> = ({
   const context = useContext(ElementContext);
   const [editable, setEditable] = useState<boolean>(false);
   const [chContent, setChContent] = useState<string>("");
-  const [showContextMenu, setShowContextMenu] = useState<{
-    show: boolean;
-    position: { top: number; left: number };
-  }>({ show: false, position: { left: 0, top: 0 } });
+  const [showContextMenu, setShowContextMenu] = useState<IContextMenu>({
+    show: false,
+    position: { left: 0, top: 0 },
+  });
 
   const Element = `${element}` as keyof JSX.IntrinsicElements;
 
@@ -61,7 +62,10 @@ const CreateComponent: React.FC<elementProps> = ({
       )}
 
       {showContextMenu.show && (
-        <ContextMenu position={showContextMenu.position} />
+        <ContextMenu
+          position={showContextMenu.position}
+          closeContextMenu={setShowContextMenu}
+        />
       )}
     </>
   );

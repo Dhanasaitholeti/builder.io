@@ -1,12 +1,15 @@
-import { useEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
+import { IContextMenu } from "../libs/types/contextmenu.type";
 
-interface IContextMenu {
+interface IContextMenuProps {
   position: { left: number; top: number };
+  closeContextMenu: Dispatch<SetStateAction<IContextMenu>>;
 }
 
-const ContextMenu: React.FC<IContextMenu> = ({ position }) => {
-  useEffect(() => {}, [position]);
-
+const ContextMenu: React.FC<IContextMenuProps> = ({
+  position,
+  closeContextMenu,
+}) => {
   return (
     <>
       <div
@@ -19,6 +22,16 @@ const ContextMenu: React.FC<IContextMenu> = ({ position }) => {
           <li>styles</li>
           <li>del</li>
         </ul>
+        <button
+          onClick={() =>
+            closeContextMenu({
+              show: false,
+              position: { left: 0, top: 0 },
+            })
+          }
+        >
+          close
+        </button>
       </div>
     </>
   );
