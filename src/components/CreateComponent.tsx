@@ -25,8 +25,6 @@ const CreateComponent: React.FC<elementProps> = ({
       show: true,
       position: { left: e.pageX, top: e.pageY },
     });
-    console.log(e.pageX, e.pageY);
-    console.log("context menu opened");
   };
 
   const handleDoubleClick = () => {
@@ -46,15 +44,16 @@ const CreateComponent: React.FC<elementProps> = ({
         <Element
           src={content}
           id={id}
+          className="hover:cursor-pointer"
           onContextMenu={(e) => hadleOnContextMenu(e)}
         />
       ) : (
         <Element
           id={id}
-          contentEditable={editable}
+          contentEditable={editable} //will remove it
           onContextMenu={(e) => hadleOnContextMenu(e)}
-          onInput={(e) => handleOnChange(e)}
-          onDoubleClick={() => handleDoubleClick()}
+          onInput={(e) => handleOnChange(e)} //will remove
+          onDoubleClick={() => handleDoubleClick()} //will remove
           className="hover:cursor-pointer"
         >
           {content}

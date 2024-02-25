@@ -5,14 +5,13 @@ interface IContextMenu {
 }
 
 const ContextMenu: React.FC<IContextMenu> = ({ position }) => {
-  console.log(position);
-
   useEffect(() => {}, [position]);
 
   return (
     <>
       <div
-        className={`absolute z-10 top-[${position.top}] left-[${position.left}]`}
+        className={"absolute z-10 border border-white"}
+        style={{ top: `${position.top}px`, left: `${position.left}px` }}
       >
         <p>This is Context Menu</p>
         <ul>
