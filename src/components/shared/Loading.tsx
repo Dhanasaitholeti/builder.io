@@ -1,4 +1,4 @@
-const Loading = () => {
+const Loading: React.FC = () => {
   return (
     <>
       <div>

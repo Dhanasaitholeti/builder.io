@@ -3,13 +3,11 @@ import CreateComponent from "./CreateComponent";
 import { ElementContext } from "../contexts/ElementContext";
 import { elementProps } from "../libs/types/element.type";
 
-const Canvas = () => {
+const Canvas: React.FC = () => {
   const data = useContext(ElementContext);
 
-  console.log(data);
-
   const handleOnDrop = (e: React.DragEvent) => {
-    const elementdata = JSON.parse(e.dataTransfer.getData("textData"));
+    const elementdata = JSON.parse(e.dataTransfer.getData("elementData"));
     data?.addElement(elementdata);
   };
 

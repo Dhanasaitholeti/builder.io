@@ -15,13 +15,13 @@ const CreateComponent: React.FC<elementProps> = ({
   const Element = `${element}` as keyof JSX.IntrinsicElements;
 
   const handleDoubleClick = () => {
-    console.log("hi ihi");
+    console.log("editing enabled");
     setEditable((prev) => !prev);
   };
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLElement>) => {
+  const handleOnChange = (e: any) => {
     const newValue = e.currentTarget.textContent || "";
-    setChContent(newValue);
+    setChContent(() => newValue);
     context?.changeContentOfElement(id, chContent);
   };
 

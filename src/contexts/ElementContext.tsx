@@ -21,7 +21,6 @@ export const useElementContext = () => {
   };
 
   const changeContentOfElement = (id: string, content: any) => {
-    console.log("it came here");
     elements.map((element) => {
       if (id === element.id) element.content = content;
     });

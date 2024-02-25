@@ -3,11 +3,11 @@ import { Suspense, lazy } from "react";
 import HomeScreen from "../pages/HomeScreen";
 import Loading from "../components/shared/Loading";
 import LoginScreen from "../pages/LoginScreen";
-import SignupScreen from "../pages/SignupScreen";
 
 const NotFoundScreen = lazy(() => import("../pages/NotFoundScreen"));
+const SignupScreen = lazy(() => import("../pages/SignupScreen"));
 
-const RouteManager = () => {
+const RouteManager: React.FC = () => {
   return (
     <>
       <Suspense fallback={<Loading />}>

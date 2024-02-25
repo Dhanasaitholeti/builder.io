@@ -1,4 +1,4 @@
-const Navbar = () => {
+const Navbar: React.FC = () => {
   return (
     <>
       <nav className="static bg-gray-100 px-10 py-3 drop-shadow-md">

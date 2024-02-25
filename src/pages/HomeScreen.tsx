@@ -1,7 +1,7 @@
 import Canvas from "../components/Canvas";
 import { ElementContextProvider } from "../contexts/ElementContext";
 
-const HomeScreen = () => {
+const HomeScreen: React.FC = () => {
   return (
     <>
       <ElementContextProvider>

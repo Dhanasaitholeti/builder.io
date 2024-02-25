@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const NotFoundScreen = () => {
+const NotFoundScreen: React.FC = () => {
   return (
     <>
       <div className="h-[60vh] w-full flex flex-col items-center justify-center gap-10">
