@@ -12,10 +12,7 @@ const TextElement: React.FC = () => {
 
   return (
     <>
-      <SideElementCard
-        elementName="Text Element"
-        componentData={componentData}
-      />
+      <SideElementCard elementName="Text" componentData={componentData} />
     </>
   );
 };

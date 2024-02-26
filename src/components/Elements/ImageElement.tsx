@@ -12,10 +12,7 @@ const ImageElement: React.FC = () => {
 
   return (
     <>
-      <SideElementCard
-        elementName="Image Element"
-        componentData={componentData}
-      />
+      <SideElementCard elementName="Image" componentData={componentData} />
     </>
   );
 };

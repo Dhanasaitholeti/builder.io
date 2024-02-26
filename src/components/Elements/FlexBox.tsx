@@ -12,10 +12,7 @@ const FlexBox: React.FC = () => {
 
   return (
     <>
-      <SideElementCard
-        elementName="FlexBox Element"
-        componentData={componentData}
-      />
+      <SideElementCard elementName="FlexBox" componentData={componentData} />
     </>
   );
 };

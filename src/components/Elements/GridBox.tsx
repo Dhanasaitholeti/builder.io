@@ -12,10 +12,7 @@ const GridBox: React.FC = () => {
 
   return (
     <>
-      <SideElementCard
-        elementName="GridBox Element"
-        componentData={componentData}
-      />
+      <SideElementCard elementName="GridBox" componentData={componentData} />
     </>
   );
 };
