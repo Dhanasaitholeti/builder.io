@@ -1,6 +1,5 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { elementProps } from "../libs/types/element.type";
-import { ElementContext } from "../contexts/ElementContext";
 import ContextMenu from "./ContextMenu";
 import { IContextMenu } from "../libs/types/contextmenu.type";
 
@@ -10,9 +9,6 @@ const CreateComponent: React.FC<elementProps> = ({
   elementType,
   id,
 }) => {
-  const context = useContext(ElementContext);
-  const [editable, setEditable] = useState<boolean>(false);
-  const [chContent, setChContent] = useState<string>("");
   const [showContextMenu, setShowContextMenu] = useState<IContextMenu>({
     show: false,
     position: { left: 0, top: 0 },
@@ -28,16 +24,16 @@ const CreateComponent: React.FC<elementProps> = ({
     });
   };
 
-  const handleDoubleClick = () => {
-    console.log("editing enabled");
-    setEditable((prev) => !prev);
-  };
+  // const handleDoubleClick = () => {
+  //   console.log("editing enabled");
+  //   setEditable((prev) => !prev);
+  // };
 
-  const handleOnChange = (e: React.FormEvent) => {
-    const newValue = e.currentTarget.textContent || "";
-    setChContent(() => newValue);
-    context?.changeContentOfElement(id, chContent);
-  };
+  // const handleOnChange = (e: React.FormEvent) => {
+  //   const newValue = e.currentTarget.textContent || "";
+  //   setChContent(() => newValue);
+  //   context?.changeContentOfElement(id, chContent);
+  // };
 
   return (
     <>
@@ -51,10 +47,7 @@ const CreateComponent: React.FC<elementProps> = ({
       ) : (
         <Element
           id={id}
-          contentEditable={editable} //will remove it
           onContextMenu={(e) => hadleOnContextMenu(e)}
-          onInput={(e) => handleOnChange(e)} //will remove
-          onDoubleClick={() => handleDoubleClick()} //will remove
           className="hover:cursor-pointer"
         >
           {content}
@@ -63,6 +56,7 @@ const CreateComponent: React.FC<elementProps> = ({
 
       {showContextMenu.show && (
         <ContextMenu
+          elementId={id}
           position={showContextMenu.position}
           closeContextMenu={setShowContextMenu}
         />

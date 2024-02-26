@@ -5,6 +5,11 @@ interface IElementContext {
   elements: elementProps[];
   addElement: (element: elementProps) => void;
   changeContentOfElement: (id: string, content: any) => void;
+  removeELement: (id: string) => void;
+  repositionElement: (
+    id: string,
+    newPosition: { left: number; top: number }
+  ) => void;
 }
 
 export const ElementContext = createContext<IElementContext | undefined>(
@@ -26,7 +31,29 @@ export const useElementContext = () => {
     });
   };
 
-  return { elements, addElement, changeContentOfElement };
+  const removeELement = (id: string) => {
+    const newElements = elements.filter((element) => element.id !== id);
+    setElements(newElements);
+  };
+
+  const repositionElement = (
+    id: string,
+    newPosition: { left: number; top: number }
+  ) => {
+    setElements((prevElements) =>
+      prevElements.map((element) =>
+        element.id === id ? { ...element, position: newPosition } : element
+      )
+    );
+  };
+
+  return {
+    elements,
+    addElement,
+    changeContentOfElement,
+    repositionElement,
+    removeELement,
+  };
 };
 
 export const ElementContextProvider = ({
