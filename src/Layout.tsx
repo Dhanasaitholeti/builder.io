@@ -14,9 +14,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <aside className="col-span-2 bg-gray-100 flex flex-col px-2">
             <ToolBar />
           </aside>
-          <main className="col-start-3 col-span-full bg-green-200">
-            {children}
-          </main>
+          <main className="col-start-3 col-span-full">{children}</main>
         </div>
       </div>
     </>

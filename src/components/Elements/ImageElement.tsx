@@ -1,11 +1,11 @@
-import { v4 as uuidv4 } from "uuid";
 import { elementProps } from "../../libs/types/element.type";
 import SideElementCard from "../shared/SideElementCard";
+import { generateuniqueId } from "../../utils/generateuniqueId";
 
 const ImageElement: React.FC = () => {
   const componentData: elementProps = {
     elementType: "singleTag",
-    id: uuidv4(),
+    id: generateuniqueId(),
     element: "img",
     content: "https://dummyimage.com/640x4:3",
   };

@@ -1,12 +1,12 @@
 import { elementProps } from "../../libs/types/element.type";
+import { generateuniqueId } from "../../utils/generateuniqueId";
 import SideElementCard from "../shared/SideElementCard";
-import { v4 as uuidv4 } from "uuid";
 
 const TextElement: React.FC = () => {
   const componentData: elementProps = {
     elementType: "multiTag",
-    id: uuidv4(),
-    element: "p",
+    id: generateuniqueId(),
+    element: "div",
     content: "This is Text lol",
   };
 
