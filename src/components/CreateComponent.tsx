@@ -2,6 +2,7 @@ import { useState } from "react";
 import { elementProps } from "../libs/types/element.type";
 import ContextMenu from "./ContextMenu";
 import { IContextMenu } from "../libs/types/contextmenu.type";
+import { useDragHandler } from "../hooks/useDragStart.hook";
 
 const CreateComponent: React.FC<elementProps> = ({
   element,
@@ -14,6 +15,13 @@ const CreateComponent: React.FC<elementProps> = ({
     position: { left: 0, top: 0 },
   });
 
+  const handleOnDragStart = useDragHandler({
+    element,
+    elementType,
+    id,
+    content,
+  });
+
   const Element = `${element}` as keyof JSX.IntrinsicElements;
 
   const hadleOnContextMenu = (e: React.MouseEvent) => {
@@ -24,30 +32,23 @@ const CreateComponent: React.FC<elementProps> = ({
     });
   };
 
-  // const handleDoubleClick = () => {
-  //   console.log("editing enabled");
-  //   setEditable((prev) => !prev);
-  // };
-
-  // const handleOnChange = (e: React.FormEvent) => {
-  //   const newValue = e.currentTarget.textContent || "";
-  //   setChContent(() => newValue);
-  //   context?.changeContentOfElement(id, chContent);
-  // };
-
   return (
     <>
       {elementType == "singleTag" ? (
         <Element
+          draggable
           src={content}
           id={id}
           className="hover:cursor-pointer"
+          onDragStart={handleOnDragStart}
           onContextMenu={(e) => hadleOnContextMenu(e)}
         />
       ) : (
         <Element
+          draggable
           id={id}
           onContextMenu={(e) => hadleOnContextMenu(e)}
+          onDragStart={handleOnDragStart}
           className="hover:cursor-pointer"
         >
           {content}
@@ -66,3 +67,14 @@ const CreateComponent: React.FC<elementProps> = ({
 };
 
 export default CreateComponent;
+
+// const handleDoubleClick = () => {
+//   console.log("editing enabled");
+//   setEditable((prev) => !prev);
+// };
+
+// const handleOnChange = (e: React.FormEvent) => {
+//   const newValue = e.currentTarget.textContent || "";
+//   setChContent(() => newValue);
+//   context?.changeContentOfElement(id, chContent);
+// };

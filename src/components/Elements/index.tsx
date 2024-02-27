@@ -1,6 +1,10 @@
-import Flex from "./FlexBox";
-import Grid from "./GridBox";
-import Image from "./ImageElement";
-import Text from "./TextElement";
+import SideElementCard from "../shared/SideElementCard";
+import ElementsData from "./ElementsData";
 
-export default [Flex, Grid, Image, Text];
+export const Elements = ElementsData.map((element) => (
+  <SideElementCard
+    key={element.id}
+    elementName={element.elementName}
+    componentData={element}
+  />
+));
