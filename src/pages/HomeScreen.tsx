@@ -1,4 +1,4 @@
-import Canvas from "../components/Canvas";
+import Canvas from "../components/canvas/Canvas";
 import { ElementContextProvider } from "../contexts/ElementContext";
 
 const HomeScreen: React.FC = () => {

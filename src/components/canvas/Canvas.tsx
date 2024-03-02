@@ -1,13 +1,12 @@
 import { useContext } from "react";
 import CreateComponent from "./CreateComponent";
-import { ElementContext } from "../contexts/ElementContext";
-import { elementProps } from "../libs/types/element.type";
+import { ElementContext } from "../../contexts/ElementContext";
+import { elementProps } from "../../libs/types/element.type";
 
 const Canvas: React.FC = () => {
   const data = useContext(ElementContext);
 
   const handleOnDrop = (e: React.DragEvent) => {
-    console.log(JSON.parse(e.dataTransfer.getData("elementData")));
     const elementdata = JSON.parse(e.dataTransfer.getData("elementData"));
     data?.addElement(elementdata);
   };
@@ -24,7 +23,7 @@ const Canvas: React.FC = () => {
         className="h-[100%] "
       >
         {data?.elements?.map((element: elementProps) => (
-          <CreateComponent {...element} key={element.id}  />
+          <CreateComponent {...element} key={element.id} />
         ))}
       </div>
     </>

@@ -28,7 +28,7 @@ const ElementsData: elementProps[] = [
     elementType: "singleTag",
     id: generateuniqueId(),
     element: "img",
-    content: "https://dummyimage.com/640x4:3",
+    content: "https://dummyimage.com/640x4:",
   },
 ];
 

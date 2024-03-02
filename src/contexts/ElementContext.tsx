@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import { elementProps } from "../libs/types/element.type";
+import { v4 } from "uuid";
 
 interface IElementContext {
   elements: elementProps[];
@@ -22,6 +23,7 @@ export const useElementContext = () => {
   console.log(elements);
 
   const addElement = (element: elementProps) => {
+    element.id = v4();
     setElements((prev) => [...prev, element]);
   };
 

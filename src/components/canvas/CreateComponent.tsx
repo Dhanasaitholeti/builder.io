@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { elementProps } from "../libs/types/element.type";
+import { elementProps } from "../../libs/types/element.type";
 import ContextMenu from "./ContextMenu";
-import { IContextMenu } from "../libs/types/contextmenu.type";
-import { useDragHandler } from "../hooks/useDragStart.hook";
+import { IContextMenu } from "../../libs/types/contextmenu.type";
+import { useDragHandler } from "../../hooks/useDragStart.hook";
 
 const CreateComponent: React.FC<elementProps> = ({
   element,
   content,
   elementType,
+  elementName,
   id,
 }) => {
   const [showContextMenu, setShowContextMenu] = useState<IContextMenu>({
@@ -19,6 +20,7 @@ const CreateComponent: React.FC<elementProps> = ({
     element,
     elementType,
     id,
+    elementName,
     content,
   });
 
