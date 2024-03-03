@@ -36,9 +36,20 @@ export const useElementContext = () => {
   };
 
   const repositionElement = (id: string, belowId: string) => {
-    setElements((prevElements) =>
-      prevElements.filter((element) => element.id !== belowId)
-    );
+    setElements((prevElements) => {
+      const indexId = prevElements.findIndex((element) => element.id === id);
+      const indexBelowId = prevElements.findIndex(
+        (element) => element.id === belowId
+      );
+
+      if (indexId !== -1 && indexBelowId !== -1) {
+        const elementToMove = prevElements[indexId];
+        prevElements.splice(indexId, 1);
+        prevElements.splice(indexBelowId, 0, elementToMove);
+      }
+
+      return [...prevElements];
+    });
   };
 
   return {
