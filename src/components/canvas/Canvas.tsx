@@ -2,13 +2,29 @@ import { useContext } from "react";
 import CreateComponent from "./CreateComponent";
 import { ElementContext } from "../../contexts/ElementContext";
 import { elementProps } from "../../libs/types/element.type";
+import { movementType } from "../../hooks/useDragStart.hook";
+
+interface IElementData {
+  type: movementType;
+  data: elementProps;
+}
 
 const Canvas: React.FC = () => {
   const data = useContext(ElementContext);
 
   const handleOnDrop = (e: React.DragEvent) => {
-    const elementdata = JSON.parse(e.dataTransfer.getData("elementData"));
-    data?.addElement(elementdata);
+    const elementdata: IElementData = JSON.parse(
+      e.dataTransfer.getData("elementData")
+    );
+    console.log(elementdata);
+    if (elementdata.type == "insert") {
+      data?.addElement(elementdata.data);
+    } else {
+      data?.repositionElement(
+        elementdata.data.id,
+        (e.target as HTMLElement).id
+      );
+    }
   };
 
   const allowDrag = (e: React.DragEvent) => {

@@ -7,10 +7,7 @@ interface IElementContext {
   addElement: (element: elementProps) => void;
   changeContentOfElement: (id: string, content: any) => void;
   removeELement: (id: string) => void;
-  repositionElement: (
-    id: string,
-    newPosition: { left: number; top: number }
-  ) => void;
+  repositionElement: (id: string, belowId: string) => void;
 }
 
 export const ElementContext = createContext<IElementContext | undefined>(
@@ -38,14 +35,9 @@ export const useElementContext = () => {
     setElements(newElements);
   };
 
-  const repositionElement = (
-    id: string,
-    newPosition: { left: number; top: number }
-  ) => {
+  const repositionElement = (id: string, belowId: string) => {
     setElements((prevElements) =>
-      prevElements.map((element) =>
-        element.id === id ? { ...element, position: newPosition } : element
-      )
+      prevElements.filter((element) => element.id !== belowId)
     );
   };
 
