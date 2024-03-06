@@ -19,7 +19,7 @@ const SideElementCard: React.FC<SideElementCardProps> = ({
         <p
           draggable="true"
           onDragStart={(e) => handleOnDragStart(e)}
-          className="text-lg"
+          className="text-lg hover:cursor-pointer"
         >
           {elementName}
         </p>

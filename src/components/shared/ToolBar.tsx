@@ -1,10 +1,21 @@
+import EditElement from "../EditElement";
 import { Elements } from "../elements";
 
+const edit = false;
 const ToolBar: React.FC = () => {
   return (
     <>
-      <h1 className="font-semibold text-textPrimary text-xl">Add:</h1>
-      <>{Elements}</>
+      {edit ? (
+        <>
+          <h1>edit</h1>
+          <EditElement />
+        </>
+      ) : (
+        <>
+          <h1 className="font-semibold text-textPrimary text-xl">Add:</h1>
+          <>{Elements}</>
+        </>
+      )}
     </>
   );
 };

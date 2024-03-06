@@ -2,6 +2,10 @@ import { createContext, useState } from "react";
 import { elementProps } from "../libs/types/element.type";
 import { v4 } from "uuid";
 
+export interface commonProviderChildren {
+  children: React.ReactNode;
+}
+
 interface IElementContext {
   elements: elementProps[];
   addElement: (element: elementProps) => void;
@@ -65,9 +69,7 @@ export const useElementContext = () => {
 
 export const ElementContextProvider = ({
   children,
-}: {
-  children: React.ReactNode;
-}) => {
+}: commonProviderChildren) => {
   const value = useElementContext();
   return (
     <ElementContext.Provider value={value}>{children}</ElementContext.Provider>
