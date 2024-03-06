@@ -1,26 +1,18 @@
 import { useState } from "react";
-import { elementProps } from "../libs/types/element.type";
-import ContextMenu from "./ContextMenu";
-import { IContextMenu } from "../libs/types/contextmenu.type";
-import { useDragHandler } from "../hooks/useDragStart.hook";
+import { elementProps } from "../../libs/types/element.type";
+import ContextMenu from "../ui/ContextMenu";
+import { IContextMenu } from "../../libs/types/contextmenu.type";
+import { movementType, useDragHandler } from "../../hooks/useDragStart.hook";
 
-const CreateComponent: React.FC<elementProps> = ({
-  element,
-  content,
-  elementType,
-  id,
-}) => {
+const CreateComponent: React.FC<elementProps> = (props) => {
+  const { element, content, elementType, id } = props;
+
   const [showContextMenu, setShowContextMenu] = useState<IContextMenu>({
     show: false,
     position: { left: 0, top: 0 },
   });
 
-  const handleOnDragStart = useDragHandler({
-    element,
-    elementType,
-    id,
-    content,
-  });
+  const handleOnDragStart = useDragHandler(props, movementType.reposition);
 
   const Element = `${element}` as keyof JSX.IntrinsicElements;
 

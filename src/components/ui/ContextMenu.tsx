@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useContext } from "react";
-import { IContextMenu } from "../libs/types/contextmenu.type";
-import { ElementContext } from "../contexts/ElementContext";
+import { IContextMenu } from "../../libs/types/contextmenu.type";
+import { ElementContext } from "../../contexts/ElementContext";
 
 interface IContextMenuProps {
   position: { left: number; top: number };

@@ -1,15 +1,13 @@
 import { createContext, useState } from "react";
 import { elementProps } from "../libs/types/element.type";
+import { v4 } from "uuid";
 
 interface IElementContext {
   elements: elementProps[];
   addElement: (element: elementProps) => void;
   changeContentOfElement: (id: string, content: any) => void;
   removeELement: (id: string) => void;
-  repositionElement: (
-    id: string,
-    newPosition: { left: number; top: number }
-  ) => void;
+  repositionElement: (id: string, belowId: string) => void;
 }
 
 export const ElementContext = createContext<IElementContext | undefined>(
@@ -22,6 +20,7 @@ export const useElementContext = () => {
   console.log(elements);
 
   const addElement = (element: elementProps) => {
+    element.id = v4();
     setElements((prev) => [...prev, element]);
   };
 
@@ -36,15 +35,23 @@ export const useElementContext = () => {
     setElements(newElements);
   };
 
-  const repositionElement = (
-    id: string,
-    newPosition: { left: number; top: number }
-  ) => {
-    setElements((prevElements) =>
-      prevElements.map((element) =>
-        element.id === id ? { ...element, position: newPosition } : element
-      )
-    );
+  const repositionElement = (id: string, belowId: string) => {
+    setElements((prevElements) => {
+      const indexId = prevElements.findIndex((element) => element.id === id);
+      const indexBelowId = prevElements.findIndex(
+        (element) => element.id === belowId
+      );
+
+      console.log(indexId, indexBelowId);
+
+      if (indexId !== -1 && indexBelowId !== -1) {
+        const elementToMove = prevElements[indexId];
+        prevElements.splice(indexId, 1);
+        prevElements.splice(indexBelowId, 0, elementToMove);
+      }
+
+      return [...prevElements];
+    });
   };
 
   return {

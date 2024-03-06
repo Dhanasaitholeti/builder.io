@@ -1,25 +1,25 @@
 import { useDragHandler } from "../../hooks/useDragStart.hook";
-import { elementProps } from "../../libs/types/element.type";
+import { sideElementProps } from "../elements/ElementsData";
 
 interface SideElementCardProps {
   elementName: string;
-  componentData: elementProps;
+  componentData: sideElementProps;
 }
 
 const SideElementCard: React.FC<SideElementCardProps> = ({
   elementName,
   componentData,
 }) => {
-
   const handleOnDragStart = useDragHandler(componentData);
 
   return (
     <>
-      <div className="py-2 px-4 mx-4 my-2 border-1 border-black bg-white shadow-lg rounded-xl">
+      <div className="flex gap-10 items-center py-2 px-4 mx-4 my-2">
+        <componentData.logo size={24} />
         <p
           draggable="true"
           onDragStart={(e) => handleOnDragStart(e)}
-          className="font-semibold text-lg text-blue-400"
+          className="text-lg"
         >
           {elementName}
         </p>

@@ -1,21 +1,20 @@
 import { Route, Routes } from "react-router-dom";
-import { Suspense, lazy } from "react";
-import HomeScreen from "../pages/HomeScreen";
+import { Suspense } from "react";
 import Loading from "../components/shared/Loading";
-import LoginScreen from "../pages/LoginScreen";
-
-const NotFoundScreen = lazy(() => import("../pages/NotFoundScreen"));
-const SignupScreen = lazy(() => import("../pages/SignupScreen"));
+import { routesData } from "./routesdata";
 
 const RouteManager: React.FC = () => {
   return (
     <>
       <Suspense fallback={<Loading />}>
         <Routes>
-          <Route path="/" element={<HomeScreen />} />
-          <Route path="/login" element={<LoginScreen />} />
-          <Route path="/singup" element={<SignupScreen />} />
-          <Route path="*" element={<NotFoundScreen />} />
+          {routesData.map((route) => (
+            <Route
+              path={route.path}
+              element={<route.component />}
+              key={route.path}
+            />
+          ))}
         </Routes>
       </Suspense>
     </>
