@@ -11,7 +11,7 @@ export interface sideElementProps extends elementProps {
 
 const ElementsData: sideElementProps[] = [
   {
-    elementName: "FlexBox",
+    elementName: "Flex",
     elementType: "multiTag",
     id: generateuniqueId(),
     element: "div",
@@ -19,7 +19,7 @@ const ElementsData: sideElementProps[] = [
     logo: LuLayout,
   },
   {
-    elementName: "GridBox",
+    elementName: "Grid",
     elementType: "multiTag",
     id: generateuniqueId(),
     element: "div",

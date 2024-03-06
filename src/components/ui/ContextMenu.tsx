@@ -1,12 +1,15 @@
 import { Dispatch, SetStateAction, useContext } from "react";
 import { IContextMenu } from "../../libs/types/contextmenu.type";
 import { ElementContext } from "../../contexts/ElementContext";
+import { MdDelete, MdClose, MdModeEdit } from "react-icons/md";
 
 interface IContextMenuProps {
   position: { left: number; top: number };
   closeContextMenu: Dispatch<SetStateAction<IContextMenu>>;
   elementId: string;
 }
+
+const LabelCommonStyles = "w-full flex items-center gap-2 hover:cursor-pointer";
 
 const ContextMenu: React.FC<IContextMenuProps> = ({
   position,
@@ -23,16 +26,19 @@ const ContextMenu: React.FC<IContextMenuProps> = ({
         className="absolute z-10 border border-white bg-white py-2 px-4 rounded-lg divide-y-2 flex flex-col items-start gap-1 text-lg shadow-lg"
         style={{ top: `${position.top}px`, left: `${position.left}px` }}
       >
-        <button>Edit Content</button>
-        <button>Edite Styles</button>
-        <button
-          className="text-orange-600 w-full"
+        <div className={` ${LabelCommonStyles}`} onClick={() => {}}>
+          <MdModeEdit color="green" />
+          edit
+        </div>
+        <div
+          className={` ${LabelCommonStyles}`}
           onClick={() => elementContext?.removeELement(elementId)}
         >
+          <MdDelete color="orange" />
           delete
-        </button>
-        <button
-          className="text-red-600 w-full"
+        </div>
+        <div
+          className={` ${LabelCommonStyles}`}
           onClick={() =>
             closeContextMenu({
               show: false,
@@ -40,8 +46,9 @@ const ContextMenu: React.FC<IContextMenuProps> = ({
             })
           }
         >
+          <MdClose color="red" />
           close
-        </button>
+        </div>
       </div>
     </>
   );
