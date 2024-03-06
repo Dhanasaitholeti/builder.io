@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { elementProps } from "../../libs/types/element.type";
-import ContextMenu from "./ContextMenu";
+import ContextMenu from "../ui/ContextMenu";
 import { IContextMenu } from "../../libs/types/contextmenu.type";
 import { movementType, useDragHandler } from "../../hooks/useDragStart.hook";
 

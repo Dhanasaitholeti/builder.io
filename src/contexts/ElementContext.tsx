@@ -42,6 +42,8 @@ export const useElementContext = () => {
         (element) => element.id === belowId
       );
 
+      console.log(indexId, indexBelowId);
+
       if (indexId !== -1 && indexBelowId !== -1) {
         const elementToMove = prevElements[indexId];
         prevElements.splice(indexId, 1);
