@@ -1,8 +1,10 @@
 import { createContext, useState } from "react";
-import { elementProps } from "../libs/types/element.type";
 import { commonProviderChildren } from "./ElementContext";
 
-interface IEditElementContext {}
+interface IEditElementContext {
+  editElement: boolean;
+  changeEditState: (edit: boolean, elementId: string) => void;
+}
 
 export const EditElementContext = createContext<
   IEditElementContext | undefined
@@ -10,20 +12,21 @@ export const EditElementContext = createContext<
 
 interface IContextState {
   edit: boolean;
-  element: elementProps | null;
+  elementId: string | null;
 }
 
 export const useEditElementContext = () => {
-  const [edit, setEdit] = useState<IContextState>({
+  const [editElement, setEditElement] = useState<IContextState>({
     edit: false,
-    element: null,
+    elementId: null,
   });
 
-  const changeEditState = (element: elementProps) => {
-    setEdit({ edit: true, element });
+  const changeEditState = (edit: boolean, elementId: string) => {
+    console.log(elementId);
+    setEditElement({ edit, elementId });
   };
 
-  return [edit, changeEditState];
+  return { editElement: editElement.edit, changeEditState };
 };
 
 export const EditElementContextProvider = ({

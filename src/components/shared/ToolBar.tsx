@@ -1,21 +1,27 @@
+import { useContext } from "react";
 import EditElement from "../EditElement";
 import { Elements } from "../elements";
+import { EditElementContext } from "../../contexts/EditElementContext";
 
-const edit = false;
 const ToolBar: React.FC = () => {
+  const editElement = useContext(EditElementContext);
+
   return (
     <>
-      {edit ? (
-        <>
-          <h1>edit</h1>
-          <EditElement />
-        </>
-      ) : (
-        <>
-          <h1 className="font-semibold text-textPrimary text-xl">Add:</h1>
-          <>{Elements}</>
-        </>
-      )}
+      <div className="flex justify-between p-2">
+        <h1 className="font-semibold text-textPrimary text-xl">
+          {editElement?.editElement ? "Edit:" : "Add:"}
+        </h1>
+        {editElement?.editElement && (
+          <button
+            className="px-4 bg-CTAPrimary text-white font-semibold rounded-md"
+            onClick={() => editElement.changeEditState(false, "")}
+          >
+            cancel
+          </button>
+        )}
+      </div>
+      {editElement?.editElement ? <EditElement /> : <>{Elements}</>}
     </>
   );
 };

@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction, useContext } from "react";
 import { IContextMenu } from "../../libs/types/contextmenu.type";
 import { ElementContext } from "../../contexts/ElementContext";
 import { MdDelete, MdClose, MdModeEdit } from "react-icons/md";
+import { EditElementContext } from "../../contexts/EditElementContext";
 
 interface IContextMenuProps {
   position: { left: number; top: number };
@@ -19,6 +20,15 @@ const ContextMenu: React.FC<IContextMenuProps> = ({
   console.log(elementId);
 
   const elementContext = useContext(ElementContext);
+  const editElementContext = useContext(EditElementContext);
+
+  const handleEditClick = () => {
+    editElementContext?.changeEditState(true, elementId);
+    closeContextMenu({
+      show: false,
+      position: { left: 0, top: 0 },
+    });
+  };
 
   return (
     <>
@@ -26,7 +36,10 @@ const ContextMenu: React.FC<IContextMenuProps> = ({
         className="absolute z-10 border border-white bg-white py-2 px-4 rounded-lg divide-y-2 flex flex-col items-start gap-1 text-lg shadow-lg"
         style={{ top: `${position.top}px`, left: `${position.left}px` }}
       >
-        <div className={` ${LabelCommonStyles}`} onClick={() => {}}>
+        <div
+          className={` ${LabelCommonStyles}`}
+          onClick={() => handleEditClick()}
+        >
           <MdModeEdit color="green" />
           edit
         </div>
