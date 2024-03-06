@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 import { commonProviderChildren } from "./ElementContext";
 
 interface IEditElementContext {
-  editElement: boolean;
+  editElement: IContextState;
   changeEditState: (edit: boolean, elementId: string) => void;
 }
 
@@ -12,13 +12,13 @@ export const EditElementContext = createContext<
 
 interface IContextState {
   edit: boolean;
-  elementId: string | null;
+  elementId: string | undefined;
 }
 
 export const useEditElementContext = () => {
   const [editElement, setEditElement] = useState<IContextState>({
     edit: false,
-    elementId: null,
+    elementId: undefined,
   });
 
   const changeEditState = (edit: boolean, elementId: string) => {
@@ -26,7 +26,7 @@ export const useEditElementContext = () => {
     setEditElement({ edit, elementId });
   };
 
-  return { editElement: editElement.edit, changeEditState };
+  return { editElement, changeEditState };
 };
 
 export const EditElementContextProvider = ({

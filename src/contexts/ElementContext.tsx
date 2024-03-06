@@ -11,6 +11,7 @@ interface IElementContext {
   addElement: (element: elementProps) => void;
   changeContentOfElement: (id: string, content: any) => void;
   removeELement: (id: string) => void;
+  getElement: (id: string) => elementProps | undefined;
   repositionElement: (id: string, belowId: string) => void;
 }
 
@@ -58,12 +59,17 @@ export const useElementContext = () => {
     });
   };
 
+  const getElement = (id: string) => {
+    return elements.find((element) => id === element.id);
+  };
+
   return {
     elements,
     addElement,
     changeContentOfElement,
     repositionElement,
     removeELement,
+    getElement,
   };
 };
 
