@@ -21,6 +21,9 @@ const ToolBar: React.FC = () => {
           </button>
         )}
       </div>
+      <div>
+        
+      </div>
       {editElementContext?.editElement.edit ? <EditElement /> : <>{Elements}</>}
     </>
   );

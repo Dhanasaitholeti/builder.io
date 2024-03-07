@@ -11,10 +11,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       <div className="flex flex-col gap-10 min-h-screen bg-backgroundPrimary text-textPrimary font-sans">
         <Navbar />
         <div className="flex-grow grid grid-cols-12">
-          <aside className="col-span-2 flex flex-col px-2">
+          <aside className="col-span-3 flex flex-col px-2">
             <ToolBar />
           </aside>
-          <main className="col-start-3 col-span-full">{children}</main>
+          <main className="col-start-4 col-span-full">{children}</main>
         </div>
       </div>
     </>
