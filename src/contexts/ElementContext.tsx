@@ -30,8 +30,19 @@ export const useElementContext = () => {
   };
 
   const changeContentOfElement = (id: string, content: any) => {
-    elements.map((element) => {
-      if (id === element.id) element.content = content;
+    setElements((prevElements) => {
+      return prevElements.map((element) => {
+        if (id === element.id) {
+          // Return a new object with the updated content
+          return {
+            ...element,
+            content: content,
+          };
+        } else {
+          // For elements other than the one being updated, return them unchanged
+          return element;
+        }
+      });
     });
   };
 

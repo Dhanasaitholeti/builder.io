@@ -9,6 +9,18 @@ const EditElement = () => {
 
   const editElementData = elementInEditState?.editElement;
 
+  const handleOnClick = () => {
+    console.log("Got into it.");
+    const id = elementInEditState?.editElement.elementId;
+
+    if (id) {
+      elements?.changeContentOfElement(
+        id,
+        "https://placehold.jp/3d4070/ffffff/150x150.png?text=Dhanasai%20here"
+      );
+    }
+  };
+
   const presentEditingElement =
     editElementData?.elementId &&
     (elements?.getElement(editElementData.elementId) as elementProps);
@@ -22,6 +34,8 @@ const EditElement = () => {
         id=""
         placeholder={presentEditingElement && presentEditingElement?.content}
       />
+
+      <button onClick={() => handleOnClick()}>save</button>
     </>
   );
 };
