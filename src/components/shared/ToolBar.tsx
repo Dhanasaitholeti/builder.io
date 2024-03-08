@@ -5,7 +5,6 @@ import { EditElementContext } from "../../contexts/EditElementContext";
 
 const ToolBar: React.FC = () => {
   const editElementContext = useContext(EditElementContext);
-  console.log(editElementContext);
   return (
     <>
       <div className="flex justify-between p-2">
@@ -20,9 +19,6 @@ const ToolBar: React.FC = () => {
             close
           </button>
         )}
-      </div>
-      <div>
-        
       </div>
       {editElementContext?.editElement.edit ? <EditElement /> : <>{Elements}</>}
     </>

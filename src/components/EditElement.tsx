@@ -11,9 +11,7 @@ const EditElement = () => {
   const editElementData = elementInEditState?.editElement;
 
   const handleOnClick = () => {
-    console.log("Got into it.");
     const id = elementInEditState?.editElement.elementId;
-
     if (id) {
       elements?.changeContentOfElement(id, val);
     }
@@ -29,8 +27,6 @@ const EditElement = () => {
         <p className="text-lg">Content:</p>
         <input
           type="text"
-          name=""
-          id=""
           onChange={(e) => setVal(e.target.value)}
           className="bg-backgroundNavbar px-4 py-2 w-full"
           placeholder={presentEditingElement && presentEditingElement?.content}
