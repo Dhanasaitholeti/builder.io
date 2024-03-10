@@ -5,10 +5,9 @@ import { EditElementContext } from "../../contexts/EditElementContext";
 
 const ToolBar: React.FC = () => {
   const editElementContext = useContext(EditElementContext);
-  console.log(editElementContext);
   return (
     <>
-      <div className="flex justify-between p-2">
+      <div className="flex justify-between items-center p-2">
         <h1 className="font-semibold text-textPrimary text-xl">
           {editElementContext?.editElement.edit ? "Edit:" : "Add:"}
         </h1>
