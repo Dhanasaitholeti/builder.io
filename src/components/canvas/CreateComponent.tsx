@@ -1,16 +1,24 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { elementProps } from "../../libs/types/element.type";
 import ContextMenu from "../ui/ContextMenu";
 import { IContextMenu } from "../../libs/types/contextmenu.type";
 import { movementType, useDragHandler } from "../../hooks/useDragStart.hook";
+import { ElementContext } from "../../contexts/ElementContext";
 
 const CreateComponent: React.FC<elementProps> = (props) => {
   const { element, content, elementType, id } = props;
+  const elementContext = useContext(ElementContext);
 
   const [showContextMenu, setShowContextMenu] = useState<IContextMenu>({
     show: false,
     position: { left: 0, top: 0 },
   });
+
+  const handleOnDrop = (e: React.DragEvent) => {
+    const target = e.target as HTMLElement;
+    const droppedElement = JSON.parse(e.dataTransfer.getData("elementData"));
+    elementContext?.addChildrenToElement(target.id, droppedElement.data);
+  };
 
   const handleOnDragStart = useDragHandler(props, movementType.reposition);
 
@@ -28,9 +36,9 @@ const CreateComponent: React.FC<elementProps> = (props) => {
     <>
       {elementType == "singleTag" ? (
         <Element
+          id={id}
           draggable
           src={content}
-          id={id}
           className="hover:cursor-pointer"
           onDragStart={handleOnDragStart}
           onContextMenu={(e) => hadleOnContextMenu(e)}
@@ -42,6 +50,7 @@ const CreateComponent: React.FC<elementProps> = (props) => {
           onContextMenu={(e) => hadleOnContextMenu(e)}
           onDragStart={handleOnDragStart}
           className="hover:cursor-pointer"
+          onDrop={(e) => handleOnDrop(e)}
         >
           {content}
         </Element>
@@ -59,14 +68,3 @@ const CreateComponent: React.FC<elementProps> = (props) => {
 };
 
 export default CreateComponent;
-
-// const handleDoubleClick = () => {
-//   console.log("editing enabled");
-//   setEditable((prev) => !prev);
-// };
-
-// const handleOnChange = (e: React.FormEvent) => {
-//   const newValue = e.currentTarget.textContent || "";
-//   setChContent(() => newValue);
-//   context?.changeContentOfElement(id, chContent);
-// };

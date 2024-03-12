@@ -4,4 +4,6 @@ export interface elementProps {
   id: string;
   element: string;
   content?: string;
+  isChildren: boolean;
+  children?: elementProps[];
 }

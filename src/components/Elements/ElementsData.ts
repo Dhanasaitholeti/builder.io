@@ -17,6 +17,7 @@ const ElementsData: sideElementProps[] = [
     element: "div",
     content: "This is a Flex Box building it from scratch",
     logo: LuLayout,
+    isChildren: true,
   },
   {
     elementName: "Grid",
@@ -25,6 +26,7 @@ const ElementsData: sideElementProps[] = [
     element: "div",
     content: "This is a Grid Box building it from scratch",
     logo: LuLayout,
+    isChildren: true,
   },
   {
     elementName: "Text",
@@ -33,6 +35,7 @@ const ElementsData: sideElementProps[] = [
     element: "p",
     content: "This is Text lol",
     logo: MdTextFields,
+    isChildren: false,
   },
   {
     elementName: "Image",
@@ -41,6 +44,7 @@ const ElementsData: sideElementProps[] = [
     element: "img",
     content: "https://dummyimage.com/300x200",
     logo: CiImageOn,
+    isChildren: false,
   },
 ];
 

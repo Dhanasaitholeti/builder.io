@@ -17,8 +17,6 @@ const ContextMenu: React.FC<IContextMenuProps> = ({
   closeContextMenu,
   elementId,
 }) => {
-  console.log(elementId);
-
   const elementContext = useContext(ElementContext);
   const editElementContext = useContext(EditElementContext);
 
