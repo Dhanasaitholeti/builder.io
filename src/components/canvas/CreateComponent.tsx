@@ -6,7 +6,7 @@ import { movementType, useDragHandler } from "../../hooks/useDragStart.hook";
 import { ElementContext } from "../../contexts/ElementContext";
 
 const CreateComponent: React.FC<elementProps> = (props) => {
-  const { element, content, elementType, id, children } = props;
+  const { element, content, elementType, id, children, styles } = props;
   const elementContext = useContext(ElementContext);
 
   const [showContextMenu, setShowContextMenu] = useState<IContextMenu>({
@@ -32,9 +32,10 @@ const CreateComponent: React.FC<elementProps> = (props) => {
     });
   };
 
-  const dynamicClassName = `hover:cursor-pointer h-40 w-full ${
-    elementType === "singleTag" ? "bg-blue-500" : "bg-green-500"
+  const dynamicClassName = `hover:cursor-pointer ${
+    styles ? Object.values(styles).join(" ") : ""
   }`;
+  console.log(dynamicClassName);
 
   return (
     <>

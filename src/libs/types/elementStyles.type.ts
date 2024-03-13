@@ -5,6 +5,8 @@ export interface IimageStyles {
   width: string;
 }
 
-export interface IflexStyles extends IimageStyles {}
+export interface IflexStyles extends IimageStyles {
+  bg: string;
+}
 
 export interface IgridStyles extends IimageStyles {}

@@ -20,6 +20,7 @@ const ElementsData: sideElementProps[] = [
     styles: {
       height: "h-40",
       width: "w-full",
+      bg: "bg-red-600",
     },
   },
   {
