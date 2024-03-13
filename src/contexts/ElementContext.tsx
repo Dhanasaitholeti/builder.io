@@ -46,7 +46,9 @@ export const useElementContext = () => {
   };
 
   const removeELement = (id: string) => {
-    const newElements = elements.filter((element) => element.id !== id);
+    const newElements = elements.filter((element) => {
+      return element.id !== id;
+    });
     setElements(newElements);
   };
 
@@ -68,6 +70,8 @@ export const useElementContext = () => {
   };
 
   const addChildrenToElement = (parentId: string, newElement: elementProps) => {
+    removeELement(newElement.id);
+
     setElements((prevElements) => {
       return prevElements.map((element) => {
         if (parentId === element.id && element.isChildren) {

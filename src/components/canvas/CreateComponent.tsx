@@ -22,9 +22,7 @@ const CreateComponent: React.FC<elementProps> = (props) => {
 
   const handleOnDragStart = useDragHandler(props, movementType.reposition);
 
-  const Element = `${element}` as keyof JSX.IntrinsicElements;
-
-  const hadleOnContextMenu = (e: React.MouseEvent) => {
+  const handleOnContextMenu = (e: React.MouseEvent) => {
     e.preventDefault();
     setShowContextMenu({
       show: true,
@@ -36,6 +34,8 @@ const CreateComponent: React.FC<elementProps> = (props) => {
     styles ? Object.values(styles).join(" ") : ""
   }`;
 
+  const Element = `${element}` as keyof JSX.IntrinsicElements;
+
   return (
     <>
       {elementType == "singleTag" ? (
@@ -45,13 +45,13 @@ const CreateComponent: React.FC<elementProps> = (props) => {
           src={content}
           className={dynamicClassName}
           onDragStart={handleOnDragStart}
-          onContextMenu={(e) => hadleOnContextMenu(e)}
+          onContextMenu={(e) => handleOnContextMenu(e)}
         />
       ) : (
         <Element
           draggable
           id={id}
-          onContextMenu={(e) => hadleOnContextMenu(e)}
+          onContextMenu={(e) => handleOnContextMenu(e)}
           onDragStart={handleOnDragStart}
           className={dynamicClassName}
           onDrop={(e) => handleOnDrop(e)}

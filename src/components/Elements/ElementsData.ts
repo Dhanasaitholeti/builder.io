@@ -18,9 +18,10 @@ const ElementsData: sideElementProps[] = [
     logo: LuLayout,
     isChildren: true,
     styles: {
-      height: "h-40",
+      height: "h-max min-h-40",
       width: "w-full",
       bg: "bg-gray-300",
+      padding: "p-10",
     },
   },
   {
