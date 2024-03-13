@@ -35,7 +35,6 @@ const CreateComponent: React.FC<elementProps> = (props) => {
   const dynamicClassName = `hover:cursor-pointer ${
     styles ? Object.values(styles).join(" ") : ""
   }`;
-  console.log(dynamicClassName);
 
   return (
     <>
@@ -57,11 +56,11 @@ const CreateComponent: React.FC<elementProps> = (props) => {
           className={dynamicClassName}
           onDrop={(e) => handleOnDrop(e)}
         >
-          {content}
-          {children &&
-            children.map((child) => (
-              <CreateComponent key={child.id} {...child} />
-            ))}
+          {children
+            ? children.map((child) => (
+                <CreateComponent key={child.id} {...child} />
+              ))
+            : content}
         </Element>
       )}
 
