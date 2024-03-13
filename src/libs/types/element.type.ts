@@ -1,3 +1,10 @@
+import {
+  IimageStyles,
+  IparaStyles,
+  IflexStyles,
+  IgridStyles,
+} from "./elementStyles.type";
+
 export interface elementProps {
   elementName: string;
   elementType: "singleTag" | "multiTag";
@@ -6,4 +13,5 @@ export interface elementProps {
   content?: string;
   isChildren: boolean;
   children?: elementProps[];
+  styles?: IimageStyles | IparaStyles | IflexStyles | IgridStyles;
 }

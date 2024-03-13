@@ -6,7 +6,7 @@ import { movementType, useDragHandler } from "../../hooks/useDragStart.hook";
 import { ElementContext } from "../../contexts/ElementContext";
 
 const CreateComponent: React.FC<elementProps> = (props) => {
-  const { element, content, elementType, id } = props;
+  const { element, content, elementType, id, children } = props;
   const elementContext = useContext(ElementContext);
 
   const [showContextMenu, setShowContextMenu] = useState<IContextMenu>({
@@ -32,6 +32,10 @@ const CreateComponent: React.FC<elementProps> = (props) => {
     });
   };
 
+  const dynamicClassName = `hover:cursor-pointer h-40 w-full ${
+    elementType === "singleTag" ? "bg-blue-500" : "bg-green-500"
+  }`;
+
   return (
     <>
       {elementType == "singleTag" ? (
@@ -39,7 +43,7 @@ const CreateComponent: React.FC<elementProps> = (props) => {
           id={id}
           draggable
           src={content}
-          className="hover:cursor-pointer"
+          className={dynamicClassName}
           onDragStart={handleOnDragStart}
           onContextMenu={(e) => hadleOnContextMenu(e)}
         />
@@ -49,10 +53,14 @@ const CreateComponent: React.FC<elementProps> = (props) => {
           id={id}
           onContextMenu={(e) => hadleOnContextMenu(e)}
           onDragStart={handleOnDragStart}
-          className="hover:cursor-pointer"
+          className={dynamicClassName}
           onDrop={(e) => handleOnDrop(e)}
         >
           {content}
+          {children &&
+            children.map((child) => (
+              <CreateComponent key={child.id} {...child} />
+            ))}
         </Element>
       )}
 
