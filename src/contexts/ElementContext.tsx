@@ -86,8 +86,26 @@ export const useElementContext = () => {
     });
   };
 
-  const getElement = (id: string) => {
-    return elements.find((element) => id === element.id);
+  const getElement = (
+    id: string,
+    elementsList: elementProps[] = elements
+  ): elementProps | undefined => {
+    for (let element of elementsList) {
+      if (id === element.id) {
+        return element; // Found the element with the given id
+      }
+      if (
+        element.isChildren &&
+        element.children &&
+        element.children.length > 0
+      ) {
+        const foundInChildren = getElement(id, element.children);
+        if (foundInChildren) {
+          return foundInChildren; // Element found in children
+        }
+      }
+    }
+    return undefined; // Element not found
   };
 
   return {
