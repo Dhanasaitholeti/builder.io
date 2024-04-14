@@ -10,9 +10,9 @@ import (
 
 func UserRoutes() http.Handler {
 	r := chi.NewRouter()
-	    // Define authentication routes
-		r.Post("/login",controllers.LoginHandler)
-		r.Post("/register",controllers.RegisterHandler)
+
+	r.Post("/login",controllers.UserLogin)
+	r.Post("/register",controllers.UsersRegister)
 	
-		return r
+	return r
 }
