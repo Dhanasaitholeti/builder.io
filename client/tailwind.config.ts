@@ -3,22 +3,16 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   safelist: [
     {
-      pattern: /text-\w+/,
-    },
-    {
       pattern: /(p|pb|pt|pl|pr|px|py|m|mx|my|mt|mb|ml|mr)-\d+/,
     },
     {
-      pattern: /bg-\w+-\d+/,
+      pattern: /(bg|text)-\w+(-\d+)?/,
     },
     {
-      pattern: /(min|max)-(h|w)-\w+/,
+      pattern: /(min|max-)?(h|w)(-\w+|\d+)?/,
     },
     {
-      pattern: /(h|w)-\w+/,
-    },
-    {
-      pattern: /(border|rounded)-\w+/,
+      pattern: /(border|rounded)(-b|t|l|r)?(-\w+)?/,
     },
   ],
   theme: {

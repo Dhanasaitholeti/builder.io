@@ -9,6 +9,23 @@ export interface sideElementProps extends elementProps {
   logo: IconType;
 }
 
+const commonStyles = {
+  padding: "p-2",
+  paddingBottom: "",
+  paddingLeft: "",
+  paddingRight: "",
+  paddingTop: "",
+  margin: "",
+  marginBottom: "",
+  marginLeft: "",
+  marginRight: "",
+  marginTop: "",
+  border: "",
+  borderColor: "",
+  borderRadius: "",
+  borderWidth: "",
+};
+
 const ElementsData: sideElementProps[] = [
   {
     elementName: "Flex",
@@ -18,6 +35,7 @@ const ElementsData: sideElementProps[] = [
     logo: LuLayout,
     isChildren: true,
     styles: {
+      ...commonStyles,
       height: "h-max min-h-40",
       width: "w-full",
       bg: "bg-green-200",
@@ -32,6 +50,7 @@ const ElementsData: sideElementProps[] = [
     logo: LuLayout,
     isChildren: true,
     styles: {
+      ...commonStyles,
       height: "h-max min-h-40",
       width: "w-full",
       bg: "bg-gray-200",
@@ -47,17 +66,12 @@ const ElementsData: sideElementProps[] = [
     logo: MdTextFields,
     isChildren: false,
     styles: {
+      ...commonStyles,
       fontSize: "text-xl",
       fontWeight: "",
       fontStyle: "",
       textPosition: "",
       textColor: "",
-      border: "",
-      borderColor: "",
-      borderWidth: "",
-      borderRadius: "",
-      padding: "",
-      margin: "",
     },
   },
   {
@@ -69,9 +83,9 @@ const ElementsData: sideElementProps[] = [
     logo: CiImageOn,
     isChildren: false,
     styles: {
+      ...commonStyles,
       height: "max-content",
       width: "max-content",
-      padding: "p-2",
       bg: "",
     },
   },

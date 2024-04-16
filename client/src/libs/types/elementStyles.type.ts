@@ -10,35 +10,46 @@ import {
   TextPositionValues,
 } from "../enums/text.enum";
 
-export interface IparaStyles {
+interface ICommonStyles {
+  padding: string;
+  paddingTop: string;
+  paddingLeft: string;
+  paddingRight: string;
+  paddingBottom: string;
+  margin: string;
+  marginTop: string;
+  marginLeft: string;
+  marginRight: string;
+  marginBottom: string;
+  border: BorderValues | string;
+  borderColor: BorderColorValues | string;
+  borderWidth: BorderWidthValues | string;
+  borderRadius: BorderRadiusValues | string;
+}
+
+export interface IparaStyles extends ICommonStyles {
   fontSize: FontSizeValues | string;
   fontWeight: FontWeightValues | string;
   fontStyle: FontStyleValues | string;
   textPosition: TextPositionValues | string;
   textColor: TextColorValues | string;
-  border: BorderValues | string;
-  borderColor: BorderColorValues | string;
-  borderWidth: BorderWidthValues | string;
-  borderRadius: BorderRadiusValues | string;
-  padding: string;
-  margin: string;
 }
 
-export interface IimageStyles {
+export interface IimageStyles extends ICommonStyles {
   height: string;
   width: string;
   padding: string;
   bg: string;
 }
 
-export interface IflexStyles {
+export interface IflexStyles extends ICommonStyles {
   height: string;
   width: string;
   padding: string;
   bg: string;
 }
 
-export interface IgridStyles {
+export interface IgridStyles extends ICommonStyles {
   height: string;
   width: string;
   padding: string;

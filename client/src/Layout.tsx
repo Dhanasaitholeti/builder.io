@@ -7,7 +7,7 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <div className="flex flex-col gap-10 min-h-screen bg-backgroundPrimary text-textPrimary font-sans">
+      <div className="flex flex-col gap-4 min-h-screen bg-backgroundPrimary text-textPrimary font-sans">
         <Navbar />
         <main className="flex flex-grow w-full">{children}</main>
       </div>

@@ -1,6 +1,7 @@
 import { lazy } from "react";
 
-const HomeScreen = lazy(() => import("../pages/HomeScreen"));
+// const HomeScreen = lazy(() => import("../pages/HomeScreen"));
+import HomeScreen from "../pages/HomeScreen";
 const LoginScreen = lazy(() => import("../pages/LoginScreen"));
 const SignupScreen = lazy(() => import("../pages/SignupScreen"));
 const NotFoundScreen = lazy(() => import("../pages/NotFoundScreen"));
