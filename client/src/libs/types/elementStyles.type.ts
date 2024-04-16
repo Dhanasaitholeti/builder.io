@@ -25,6 +25,7 @@ interface ICommonStyles {
   borderColor: BorderColorValues | string;
   borderWidth: BorderWidthValues | string;
   borderRadius: BorderRadiusValues | string;
+  bg: string;
 }
 
 export interface IparaStyles extends ICommonStyles {
@@ -38,20 +39,32 @@ export interface IparaStyles extends ICommonStyles {
 export interface IimageStyles extends ICommonStyles {
   height: string;
   width: string;
-  padding: string;
-  bg: string;
+  objectFit: string;
 }
 
 export interface IflexStyles extends ICommonStyles {
   height: string;
   width: string;
-  padding: string;
-  bg: string;
+  flex: string;
+  flexColumn: string;
+  flexGrow: string;
+  flexWrap: string;
+  justifyContent: string;
+  alignItems: string;
+  gap: string;
 }
 
 export interface IgridStyles extends ICommonStyles {
   height: string;
   width: string;
-  padding: string;
-  bg: string;
+  grid: string;
+  gridColumns: string;
+  gridRows: string;
+  gridColumnStart: string;
+  gridColumnSpan: string;
+  gridColumnEnd: string;
+  gridRowStart: string;
+  gridRowSpan: string;
+  gridRowEnd: string;
+  gap: string;
 }
