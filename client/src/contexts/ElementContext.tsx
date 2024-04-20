@@ -15,7 +15,7 @@ export interface commonProviderChildren {
 interface IElementContext {
   elements: elementProps[];
   addElement: (element: elementProps) => void;
-  changeContentOfElement: (id: string, content: any) => void;
+  changeContentOfElement: (id: string, content: unknown) => void;
   removeELement: (id: string) => void;
   getElement: (id: string) => elementProps | undefined;
   repositionElement: (id: string, belowId: string) => void;
@@ -127,7 +127,7 @@ export const useElementContext = () => {
     id: string,
     elementsList: elementProps[] = elements
   ): elementProps | undefined => {
-    for (let element of elementsList) {
+    for (const element of elementsList) {
       if (id === element.id) {
         return element; // Found the element with the given id
       }

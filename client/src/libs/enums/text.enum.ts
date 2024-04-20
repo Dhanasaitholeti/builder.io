@@ -1,30 +1,31 @@
 export enum FontSizeValues {
-  "text-sm", // small
-  "text-md", // medium
-  "text-lg", // large
-  "text-xl", // extra large
-  "text-2xl", // double extra large
-  "text-4xl",
-  "text-5xl",
+  small="text-sm", // small
+  medium="text-md", // medium
+  large="text-lg", // large
+  xl="text-xl", // extra large
+  xxl="text-2xl", // double extra large
+  xl3="text-3xl",
+  xl4="text-4xl",
+  xl5="text-5xl",
 }
 
 export enum FontWeightValues {
-  "font-normal",
-  "font-bold",
-  "font-extrabold",
+  normal="font-normal",
+  medium="font-medium",
+  bold="font-bold",
+  exrabold="font-extrabold",
 }
 
 export enum FontStyleValues {
-  "font-normal",
-  "font-sans",
-  "font-serif",
-  "italic",
+  sans="font-sans",
+  serif="font-serif",
+  italic="italic",
 }
 
 export enum TextPositionValues {
-  "text-left",
-  "text-center",
-  "text-right",
+  left="text-left",
+  center="text-center",
+  right="text-right",
 }
 
 export enum TextColorValues {
@@ -33,9 +34,9 @@ export enum TextColorValues {
 }
 
 export enum BorderValues {
-  "border-solid",
-  "border-dashed",
-  "border-dotted",
+  solid="border border-solid",
+  dashed="border border-dashed",
+  dotted="border border-dotted",
 }
 
 export enum BorderColorValues {
@@ -51,8 +52,9 @@ export enum BorderWidthValues {
 }
 
 export enum BorderRadiusValues {
-  "rounded-none",
-  "rounded-sm",
-  "rounded-md",
-  "rounded-lg",
+  none="rounded-none",
+  small="rounded-sm",
+  medium="rounded-md",
+large="rounded-lg",
+  full = 'rounded-full'
 }
