@@ -10,7 +10,7 @@ import {
   TextPositionValues,
 } from "../enums/text.enum";
 
-interface ICommonDimensionStyles {
+export interface ICommonDimensionStyles {
   dimensions:{
     height:string;
     maxHeight:string;
@@ -22,7 +22,7 @@ interface ICommonDimensionStyles {
 }
 
 
-interface ICommonStyles {
+export interface ICommonStyles {
   padding:{
    padding: string;
    paddingTop: string;

@@ -4,27 +4,49 @@ import { generateuniqueId } from "../../utils/generateuniqueId";
 import { LuLayout } from "react-icons/lu";
 import { CiImageOn } from "react-icons/ci";
 import { MdTextFields } from "react-icons/md";
+import { ICommonDimensionStyles, ICommonStyles } from "../../libs/types/elementStyles.type";
 
 export interface sideElementProps extends elementProps {
   logo: IconType;
 }
 
-const commonStyles = {
-  padding: "p-2",
-  paddingBottom: "",
-  paddingLeft: "",
-  paddingRight: "",
-  paddingTop: "",
-  margin: "",
-  marginBottom: "",
-  marginLeft: "",
-  marginRight: "",
-  marginTop: "",
-  border: "",
-  borderColor: "",
-  borderRadius: "",
-  borderWidth: "",
+const commonStyles:ICommonStyles = {
+  padding: {
+    padding:"",
+    paddingBottom: "",
+    paddingLeft: "",
+    paddingRight: "",
+    paddingTop: "",
+  },
+  margin: {
+    margin:"",
+    marginBottom: "",
+    marginLeft: "",
+    marginRight: "",
+    marginTop: "",
+  },
+  border: {
+    border:"",
+    borderColor: "",
+    borderRadius: "",
+    borderWidth: "",
+  },
+  background: {
+    bg:""
+  }
 };
+
+
+const CommonDimenstions: ICommonDimensionStyles = {
+  dimensions:{
+    width:"",
+    height:"",
+    maxWidth:"",
+    minWidth:"",
+    maxHeight:"",
+    minHeight:""
+  }
+}
 
 const ElementsData: sideElementProps[] = [
   {
@@ -36,10 +58,16 @@ const ElementsData: sideElementProps[] = [
     isChildren: true,
     styles: {
       ...commonStyles,
-      height: "h-max min-h-40",
-      width: "w-full",
-      bg: "bg-green-200",
-      padding: "p-10",
+      ...CommonDimenstions,
+      flex:{
+        flex:"",
+        flexGrow:"",
+        flexWrap:"",
+        alignItems:"",
+        flexColumn:"",
+        justifyContent:"",
+        gap:""
+      },
     },
   },
   {
@@ -51,10 +79,19 @@ const ElementsData: sideElementProps[] = [
     isChildren: true,
     styles: {
       ...commonStyles,
-      height: "h-max min-h-40",
-      width: "w-full",
-      bg: "bg-gray-200",
-      padding: "p-10",
+      ...CommonDimenstions,
+      grid:{
+        grid:"",
+        gridRows:"",
+        gridRowEnd:"",
+        gridColumns:"",
+        gridRowSpan:"",
+        gridRowStart:"",
+        gridColumnEnd:"",
+        gridColumnSpan:"",
+        gridColumnStart:"",
+        gap:""
+      }
     },
   },
   {
@@ -67,11 +104,14 @@ const ElementsData: sideElementProps[] = [
     isChildren: false,
     styles: {
       ...commonStyles,
-      fontSize: "text-xl",
-      fontWeight: "",
-      fontStyle: "",
-      textPosition: "",
-      textColor: "",
+      ...CommonDimenstions,
+      font:{
+        fontSize:"",
+        fontStyle:"",
+        fontWeight:"",
+      },
+      textColor:"",
+      textPosition:""
     },
   },
   {
@@ -84,9 +124,9 @@ const ElementsData: sideElementProps[] = [
     isChildren: false,
     styles: {
       ...commonStyles,
-      height: "max-content",
-      width: "max-content",
-      bg: "",
+      ...CommonDimenstions,
+      objectFit:""
+
     },
   },
 ];
