@@ -12,7 +12,7 @@ export interface sideElementProps extends elementProps {
 
 const commonStyles:ICommonStyles = {
   padding: {
-    padding:"",
+    padding:"p-2",
     paddingBottom: "",
     paddingLeft: "",
     paddingRight: "",
@@ -32,7 +32,7 @@ const commonStyles:ICommonStyles = {
     borderWidth: "",
   },
   background: {
-    bg:""
+    bg:"bg-green-400"
   }
 };
 
@@ -44,7 +44,7 @@ const CommonDimenstions: ICommonDimensionStyles = {
     maxWidth:"",
     minWidth:"",
     maxHeight:"",
-    minHeight:""
+    minHeight:"min-h-60"
   }
 }
 

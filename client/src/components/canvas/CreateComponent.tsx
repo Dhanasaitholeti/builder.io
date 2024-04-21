@@ -4,6 +4,7 @@ import ContextMenu from "../ui/ContextMenu";
 import { IContextMenu } from "../../libs/types/contextmenu.type";
 import { movementType, useDragHandler } from "../../hooks/useDragStart.hook";
 import { ElementContext } from "../../contexts/ElementContext";
+import { generateDynamicClassnames } from "../../utils/generateDynamicClassName";
 
 const CreateComponent: React.FC<elementProps> = (props) => {
   const { element, content, elementType, id, children, styles } = props;
@@ -30,11 +31,7 @@ const CreateComponent: React.FC<elementProps> = (props) => {
     });
   };
 
-  const dynamicClassName = `hover:cursor-pointer ${
-    styles ? Object.values(styles).join(" ") : ""
-  }`;
-
-  console.log(dynamicClassName);
+  const dynamicClassName = `hover:cursor-pointer ${generateDynamicClassnames(styles)}`;
 
   const Element = `${element}` as keyof JSX.IntrinsicElements;
 
