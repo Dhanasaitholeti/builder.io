@@ -9,6 +9,7 @@ import {
   IimageStyles,
   IparaStyles,
 } from "../libs/types/elementStyles.type";
+import { MdOutlineArrowForward } from "react-icons/md";
 
 const EditElement = () => {
   const [val, setVal] = useState("");
@@ -87,20 +88,16 @@ const EditElement = () => {
           />
         </div>
 
-        {styleKeys?.map((style) => (
           <div
-            className="flex flex-col items-start max-w-full w-full px-4 gap-2"
-            key={style}
+            className="flex flex-col px-4 py-2 gap-2"
           >
-            <p>{style}</p>
-            <input
-              type="text"
-              className="bg-backgroundNavbar px-4 py-2 w-full"
-              onChange={(e) => handleOnStyleChange(style, e.target.value)}
-              placeholder={styles && (styles[style] as string)}
-            />
-          </div>
+        {styleKeys?.map((style) => (
+            <div className="flex justify-between items-center px-2 rounded-md max-w-full w-full hover:bg-gray-200 cursor-pointer"> 
+            <p className="text-lg my-2">{style}</p>  
+            <MdOutlineArrowForward size={24} />
+            </div>
         ))}
+          </div>
       </div>
 
       <button
