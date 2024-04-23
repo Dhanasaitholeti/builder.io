@@ -4,49 +4,51 @@ import { generateuniqueId } from "../../utils/generateuniqueId";
 import { LuLayout } from "react-icons/lu";
 import { CiImageOn } from "react-icons/ci";
 import { MdTextFields } from "react-icons/md";
-import { ICommonDimensionStyles, ICommonStyles } from "../../libs/types/elementStyles.type";
+import {
+  ICommonDimensionStyles,
+  ICommonStyles,
+} from "../../libs/types/elementStyles.type";
 
 export interface sideElementProps extends elementProps {
   logo: IconType;
 }
 
-const commonStyles:ICommonStyles = {
+const commonStyles: ICommonStyles = {
   padding: {
-    padding:"p-2",
+    padding: "p-2",
     paddingBottom: "",
     paddingLeft: "",
     paddingRight: "",
     paddingTop: "",
   },
   margin: {
-    margin:"",
+    margin: "",
     marginBottom: "",
     marginLeft: "",
     marginRight: "",
     marginTop: "",
   },
   border: {
-    border:"",
+    border: "",
     borderColor: "",
     borderRadius: "",
     borderWidth: "",
   },
   background: {
-    bg:"bg-green-400"
-  }
+    bg: "bg-green-400",
+  },
 };
 
-
 const CommonDimenstions: ICommonDimensionStyles = {
-  dimensions:{
-    width:"",
-    height:"",
-    maxWidth:"",
-    minWidth:"",
-    maxHeight:"",
-    minHeight:"min-h-60"
-  }
-}
+  dimensions: {
+    width: "",
+    height: "",
+    maxWidth: "",
+    minWidth: "",
+    maxHeight: "",
+    minHeight: "min-h-60",
+  },
+};
 
 const ElementsData: sideElementProps[] = [
   {
@@ -59,14 +61,14 @@ const ElementsData: sideElementProps[] = [
     styles: {
       ...commonStyles,
       ...CommonDimenstions,
-      flex:{
-        flex:"",
-        flexGrow:"",
-        flexWrap:"",
-        alignItems:"",
-        flexColumn:"",
-        justifyContent:"",
-        gap:""
+      flex: {
+        flex: "",
+        flexGrow: "",
+        flexWrap: "",
+        alignItems: "",
+        flexColumn: "",
+        justifyContent: "",
+        gap: "",
       },
     },
   },
@@ -80,18 +82,18 @@ const ElementsData: sideElementProps[] = [
     styles: {
       ...commonStyles,
       ...CommonDimenstions,
-      grid:{
-        grid:"",
-        gridRows:"",
-        gridRowEnd:"",
-        gridColumns:"",
-        gridRowSpan:"",
-        gridRowStart:"",
-        gridColumnEnd:"",
-        gridColumnSpan:"",
-        gridColumnStart:"",
-        gap:""
-      }
+      grid: {
+        grid: "",
+        gridRows: "",
+        gridRowEnd: "",
+        gridColumns: "",
+        gridRowSpan: "",
+        gridRowStart: "",
+        gridColumnEnd: "",
+        gridColumnSpan: "",
+        gridColumnStart: "",
+        gap: "",
+      },
     },
   },
   {
@@ -105,13 +107,15 @@ const ElementsData: sideElementProps[] = [
     styles: {
       ...commonStyles,
       ...CommonDimenstions,
-      font:{
-        fontSize:"",
-        fontStyle:"",
-        fontWeight:"",
+      font: {
+        fontSize: "",
+        fontStyle: "",
+        fontWeight: "",
       },
-      textColor:"",
-      textPosition:""
+      text: {
+        textColor: "",
+        textPosition: "",
+      },
     },
   },
   {
@@ -125,8 +129,7 @@ const ElementsData: sideElementProps[] = [
     styles: {
       ...commonStyles,
       ...CommonDimenstions,
-      objectFit:""
-
+      objectFit: "",
     },
   },
 ];

@@ -14,7 +14,7 @@ import { MdOutlineArrowForward } from "react-icons/md";
 const EditElement = () => {
   const [val, setVal] = useState("");
   const [styles, setStyles] = useState<
-    IimageStyles | IflexStyles | IgridStyles | IparaStyles | {}
+    IimageStyles | IflexStyles | IgridStyles | IparaStyles | object
   >({});
 
   const elements = useContext(ElementContext);
@@ -88,16 +88,14 @@ const EditElement = () => {
           />
         </div>
 
-          <div
-            className="flex flex-col px-4 py-2 gap-2"
-          >
-        {styleKeys?.map((style) => (
-            <div className="flex justify-between items-center px-2 rounded-md max-w-full w-full hover:bg-gray-200 cursor-pointer"> 
-            <p className="text-lg my-2">{style}</p>  
-            <MdOutlineArrowForward size={24} />
+        <div className="flex flex-col px-4 py-2 gap-2">
+          {styleKeys?.map((style) => (
+            <div className="flex justify-between items-center px-2 rounded-md max-w-full w-full hover:bg-gray-200 cursor-pointer">
+              <p className="text-lg my-2">{style}</p>
+              <MdOutlineArrowForward size={24} />
             </div>
-        ))}
-          </div>
+          ))}
+        </div>
       </div>
 
       <button

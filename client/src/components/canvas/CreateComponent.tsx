@@ -31,7 +31,9 @@ const CreateComponent: React.FC<elementProps> = (props) => {
     });
   };
 
-  const dynamicClassName = `hover:cursor-pointer ${generateDynamicClassnames(styles)}`;
+  const dynamicClassName = `hover:cursor-pointer ${generateDynamicClassnames(
+    styles!
+  )}`;
 
   const Element = `${element}` as keyof JSX.IntrinsicElements;
 
