@@ -2,8 +2,11 @@ import { useContext } from "react";
 import EditElement from "../EditElement";
 import { Elements } from "../elements";
 import { EditElementContext } from "../../contexts/EditElementContext";
+import { useNavigate } from "react-router-dom";
 
 const ToolBar: React.FC = () => {
+  const navigate = useNavigate();
+
   const editElementContext = useContext(EditElementContext);
   return (
     <>
@@ -14,7 +17,10 @@ const ToolBar: React.FC = () => {
         {editElementContext?.editElement.edit && (
           <button
             className="px-4 bg-CTAPrimary text-white font-semibold rounded-md"
-            onClick={() => editElementContext.changeEditState(false, "")}
+            onClick={() => {
+              editElementContext.changeEditState(false, "");
+              navigate("/");
+            }}
           >
             close
           </button>
