@@ -1,0 +1,7 @@
+root = "./cmd/app"
+tmp_dir = "tmp"
+build_args = ["-tags", "development"]
+exclude_dir = ["vendor"]
+include_ext = [".go"]
+log_color = true
+log_time = true
