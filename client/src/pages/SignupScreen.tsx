@@ -5,7 +5,7 @@ const SignupScreen: React.FC = () => {
         <h1 className="text-2xl font-semibold">Signup screen</h1>
         <div className="flex flex-col w-full">
           <div className="flex flex-col p-4 gap-2">
-            <label htmlFor="" className="text-lg">
+          <label htmlFor="" className="text-lg">
               Name:
             </label>
             <input

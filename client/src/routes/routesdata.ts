@@ -1,5 +1,4 @@
 import { lazy } from "react";
-
 // const HomeScreen = lazy(() => import("../pages/HomeScreen"));
 import HomeScreen from "../pages/HomeScreen";
 const LoginScreen = lazy(() => import("../pages/LoginScreen"));
@@ -10,6 +9,7 @@ interface IrouteData {
   path: string;
   component: React.FC;
 }
+
 export const routesData: IrouteData[] = [
   {
     path: "/",
